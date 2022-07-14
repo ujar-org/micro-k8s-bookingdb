@@ -24,10 +24,7 @@ logbook, micrometer, _checkstyle_ configuration, SpotBugs, PMD etc.
 - [Docker](https://docs.docker.com/install/)
 - [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)
 - [Virtualbox](https://www.virtualbox.org/manual/ch02.html)
-- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-- [sdkman](https://sdkman.io/install)
-- [Apache Maven](https://maven.apache.org/install.html)
-- [Curl](https://help.ubidots.com/en/articles/2165289-learn-how-to-install-run-curl-on-windows-macosx-linux)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)- [Apache Maven](https://maven.apache.org/install.html)
 - [HTTPie](https://httpie.org/doc#installation)
 - [tree](http://mama.indstate.edu/users/ice/tree/)
 
