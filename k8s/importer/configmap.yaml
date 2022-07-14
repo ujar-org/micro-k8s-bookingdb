@@ -1,7 +1,7 @@
 apiVersion : v1
 kind : ConfigMap
 metadata :
-  name : importer
+  name : importer-service
 data :
   datasource-url : jdbc:mysql://mysql:3306/sa_test_db
   rabbitmq-host : rabbitmq

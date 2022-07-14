@@ -1,21 +1,21 @@
 apiVersion : apps/v1
 kind : Deployment
 metadata :
-  name : dashboard
+  name : dashboard-service
   labels :
-    app : dashboard
+    app : dashboard-service
 spec :
   replicas : 1
   selector :
     matchLabels :
-      app : dashboard
+      app : dashboard-service
   template :
     metadata :
       labels :
-        app : dashboard
+        app : dashboard-service
     spec :
       containers :
-        - name : dashboard
+        - name : dashboard-service
           image : docker-registry.ujar.org/ujar/micro-k8s-bookingdb-dashboard-service:latest
           ports :
             - containerPort : 8080
@@ -81,13 +81,13 @@ spec :
 apiVersion : v1
 kind : Service
 metadata :
-  name : dashboard
+  name : dashboard-service
   labels :
-    app : dashboard
+    app : dashboard-service
 spec :
   ports :
     - port : 8080
       targetPort : 8080
       protocol : TCP
   selector :
-    app : dashboard
+    app : dashboard-service

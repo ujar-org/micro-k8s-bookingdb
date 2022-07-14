@@ -1,21 +1,21 @@
 apiVersion : apps/v1
 kind : Deployment
 metadata :
-  name : importer
+  name : importer-service
   labels :
-    app : importer
+    app : importer-service
 spec :
   replicas : 1
   selector :
     matchLabels :
-      app : importer
+      app : importer-service
   template :
     metadata :
       labels :
-        app : importer
+        app : importer-service
     spec :
       containers :
-        - name : importer
+        - name : importer-service
           image : docker-registry.ujar.org/ujar/micro-k8s-bookingdb-importer-service:latest
           ports :
             - containerPort : 8080
@@ -23,37 +23,37 @@ spec :
             - name : DATASOURCE_URL
               valueFrom :
                 configMapKeyRef :
-                  name : importer
+                  name : importer-service
                   key : datasource-url
             - name : DATASOURCE_USERNAME
               valueFrom :
                 secretKeyRef :
-                  name : importer
+                  name : importer-service
                   key : datasource-username
             - name : DATASOURCE_PASSWORD
               valueFrom :
                 secretKeyRef :
-                  name : importer
+                  name : importer-service
                   key : datasource-password
             - name : RABBITMQ_HOST
               valueFrom :
                 configMapKeyRef :
-                  name : importer
+                  name : importer-service
                   key : rabbitmq-host
             - name : RABBITMQ_PORT
               valueFrom :
                 configMapKeyRef :
-                  name : importer
+                  name : importer-service
                   key : rabbitmq-port
             - name : RABBITMQ_USERNAME
               valueFrom :
                 secretKeyRef :
-                  name : importer
+                  name : importer-service
                   key : rabbitmq-username
             - name : RABBITMQ_PASSWORD
               valueFrom :
                 secretKeyRef :
-                  name : importer
+                  name : importer-service
                   key : rabbitmq-password
           resources :
             requests :
@@ -81,13 +81,13 @@ spec :
 apiVersion : v1
 kind : Service
 metadata :
-  name : importer
+  name : importer-service
   labels :
-    app : importer
+    app : importer-service
 spec :
   ports :
     - port : 8080
       targetPort : 8080
       protocol : TCP
   selector :
-    app : importer
+    app : importer-service

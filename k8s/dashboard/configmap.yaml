@@ -1,7 +1,7 @@
 apiVersion : v1
 kind : ConfigMap
 metadata :
-  name : dashboard
+  name : dashboard-service
 data :
   datasource-url : jdbc:mysql://mysql:3306/sa_test_db
   rabbitmq-host : rabbitmq

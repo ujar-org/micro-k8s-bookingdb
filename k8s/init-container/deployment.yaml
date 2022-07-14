@@ -1,21 +1,21 @@
 apiVersion : apps/v1
 kind : Deployment
 metadata :
-  name : init-container
+  name : init-container-service
   labels :
-    app : init-container
+    app : init-container-service
 spec :
   replicas : 1
   selector :
     matchLabels :
-      app : init-container
+      app : init-container-service
   template :
     metadata :
       labels :
-        app : init-container
+        app : init-container-service
     spec :
       containers :
-        - name : init-container
+        - name : init-container-service
           image : docker-registry.ujar.org/ujar/ujar/micro-k8s-bookingdb-init-container-service:latest
           ports :
             - containerPort : 8080
@@ -23,17 +23,17 @@ spec :
             - name : DATASOURCE_URL
               valueFrom :
                 configMapKeyRef :
-                  name : init-container
+                  name : init-container-service
                   key : datasource-url
             - name : DATASOURCE_USERNAME
               valueFrom :
                 secretKeyRef :
-                  name : init-container
+                  name : init-container-service
                   key : datasource-username
             - name : DATASOURCE_PASSWORD
               valueFrom :
                 secretKeyRef :
-                  name : init-container
+                  name : init-container-service
                   key : datasource-password
           resources :
             requests :
@@ -61,13 +61,13 @@ spec :
 apiVersion : v1
 kind : Service
 metadata :
-  name : init-container
+  name : init-container-service
   labels :
-    app : init-container
+    app : init-container-service
 spec :
   ports :
     - port : 8080
       targetPort : 8080
       protocol : TCP
   selector :
-    app : init-container
+    app : init-container-service
