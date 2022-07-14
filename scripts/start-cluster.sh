@@ -13,5 +13,4 @@ minikube addons enable metrics-server
 eval $(minikube docker-env)
 
 kubectl config use-context $CLUSTER_NAME
-# minikube -p $CLUSTER_NAME tunnel dashboard
-minikube -p $CLUSTER_NAME dashboard --url
+minikube -p $CLUSTER_NAME tunnel dashboard
