@@ -1,93 +1,93 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: importer
-  labels:
-    app: importer
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: importer
-  template:
-    metadata:
-      labels:
-        app: importer
-    spec:
-      containers:
-      - name: importer
-        image: docker-registry.ujar.org/ujar/micro-k8s-bookingdb-importer-service:latest
-        ports:
-        - containerPort: 8080
-        env:
-        - name: DATASOURCE_URL
-          valueFrom:
-            configMapKeyRef:
-              name: importer
-              key: datasource.url
-        - name: DATASOURCE_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: importer
-              key: datasource.username
-        - name: DATASOURCE_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: importer
-              key: datasource.password
-        - name: RABBITMQ_HOST
-          valueFrom:
-            configMapKeyRef:
-              name: importer
-              key: rabbitmq.host
-        - name: RABBITMQ_PORT
-          valueFrom:
-            configMapKeyRef:
-              name : importer
-              key : rabbitmq.port
-        - name: RABBITMQ_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: importer
-              key: rabbitmq.username
-        - name: RABBITMQ_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: importer
-              key: rabbitmq.password
-        resources:
-          requests:
-            cpu: "0.2"
-            memory: 300Mi
-          limits:
-            cpu: "1.0"
-            memory: 300Mi
-        readinessProbe:
-          tcpSocket:
-            port: 8080
-          initialDelaySeconds: 50
-          timeoutSeconds: 2
-          periodSeconds: 20
-          failureThreshold: 5
-        livenessProbe:
-          tcpSocket:
-            port: 8080
-          initialDelaySeconds: 50
-          timeoutSeconds: 2
-          periodSeconds: 20
-          failureThreshold: 5
-      serviceAccountName: api-service-account
+apiVersion : apps/v1
+kind : Deployment
+metadata :
+  name : importer
+  labels :
+    app : importer
+spec :
+  replicas : 1
+  selector :
+    matchLabels :
+      app : importer
+  template :
+    metadata :
+      labels :
+        app : importer
+    spec :
+      containers :
+        - name : importer
+          image : docker-registry.ujar.org/ujar/micro-k8s-bookingdb-importer-service:latest
+          ports :
+            - containerPort : 8080
+          env :
+            - name : DATASOURCE_URL
+              valueFrom :
+                configMapKeyRef :
+                  name : importer
+                  key : datasource.url
+            - name : DATASOURCE_USERNAME
+              valueFrom :
+                secretKeyRef :
+                  name : importer
+                  key : datasource.username
+            - name : DATASOURCE_PASSWORD
+              valueFrom :
+                secretKeyRef :
+                  name : importer
+                  key : datasource.password
+            - name : RABBITMQ_HOST
+              valueFrom :
+                configMapKeyRef :
+                  name : importer
+                  key : rabbitmq.host
+            - name : RABBITMQ_PORT
+              valueFrom :
+                configMapKeyRef :
+                  name : importer
+                  key : rabbitmq.port
+            - name : RABBITMQ_USERNAME
+              valueFrom :
+                secretKeyRef :
+                  name : importer
+                  key : rabbitmq.username
+            - name : RABBITMQ_PASSWORD
+              valueFrom :
+                secretKeyRef :
+                  name : importer
+                  key : rabbitmq.password
+          resources :
+            requests :
+              cpu : "0.2"
+              memory : 300Mi
+            limits :
+              cpu : "1.0"
+              memory : 300Mi
+          readinessProbe :
+            tcpSocket :
+              port : 8080
+            initialDelaySeconds : 50
+            timeoutSeconds : 2
+            periodSeconds : 20
+            failureThreshold : 5
+          livenessProbe :
+            tcpSocket :
+              port : 8080
+            initialDelaySeconds : 50
+            timeoutSeconds : 2
+            periodSeconds : 20
+            failureThreshold : 5
+      serviceAccountName : api-service-account
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: importer
-  labels:
-    app: importer
-spec:
-  ports:
-  - port: 8080
-    targetPort: 8080
-    protocol: TCP
-  selector:
-    app: importer
+apiVersion : v1
+kind : Service
+metadata :
+  name : importer
+  labels :
+    app : importer
+spec :
+  ports :
+    - port : 8080
+      targetPort : 8080
+      protocol : TCP
+  selector :
+    app : importer

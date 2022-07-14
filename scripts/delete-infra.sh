@@ -11,3 +11,7 @@ kubectl delete -n $K8S_NAMESPACE deployment mysql
 kubectl delete -n $K8S_NAMESPACE service mysql
 kubectl delete -n $K8S_NAMESPACE configmap mysql
 kubectl delete -n $K8S_NAMESPACE secret mysql
+
+kubectl delete -n $K8S_NAMESPACE deployment rabbitmq
+kubectl delete -n $K8S_NAMESPACE service rabbitmq
+kubectl delete -n $K8S_NAMESPACE secret rabbitmq
