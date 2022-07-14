@@ -5,4 +5,4 @@ metadata :
 data :
   datasource-url : jdbc:mysql://mysql:3306/sa_test_db
   rabbitmq-host : rabbitmq
-  rabbitmq-port : 5672
+  rabbitmq-port : "5672"
