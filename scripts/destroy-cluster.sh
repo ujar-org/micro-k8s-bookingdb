@@ -20,3 +20,5 @@ kubectl delete serviceaccount $SA_NAME -n $K8S_NAMESPACE
 kubectl delete clusterrole microservices-kubernetes-namespace-reader
 
 kubectl delete namespace $K8S_NAMESPACE
+
+exit;

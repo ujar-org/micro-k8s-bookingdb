@@ -24,22 +24,22 @@ spec :
               valueFrom :
                 configMapKeyRef :
                   name : mysql
-                  key : database.name
+                  key : database-name
             - name : MYSQL_USER
               valueFrom :
                 secretKeyRef :
                   name : mysql
-                  key : database.user
+                  key : database-user
             - name : MYSQL_PASSWORD
               valueFrom :
                 secretKeyRef :
                   name : mysql
-                  key : database.password
+                  key : database-password
             - name : MYSQL_ROOT_PASSWORD
               valueFrom :
                 secretKeyRef :
                   name : mysql
-                  key : database.root.password
+                  key : database-root-password
           resources :
             requests :
               cpu : "0.2"

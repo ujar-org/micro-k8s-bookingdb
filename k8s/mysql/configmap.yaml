@@ -3,4 +3,4 @@ kind : ConfigMap
 metadata :
   name : mysql
 data :
-  database.name : sa_test_db
+  database-name : sa_test_db

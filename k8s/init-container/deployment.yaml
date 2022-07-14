@@ -24,17 +24,17 @@ spec :
               valueFrom :
                 configMapKeyRef :
                   name : init-container
-                  key : datasource.url
+                  key : datasource-url
             - name : DATASOURCE_USERNAME
               valueFrom :
                 secretKeyRef :
                   name : init-container
-                  key : datasource.username
+                  key : datasource-username
             - name : DATASOURCE_PASSWORD
               valueFrom :
                 secretKeyRef :
                   name : init-container
-                  key : datasource.password
+                  key : datasource-password
           resources :
             requests :
               cpu : "0.2"

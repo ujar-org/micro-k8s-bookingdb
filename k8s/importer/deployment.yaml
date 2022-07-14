@@ -24,37 +24,37 @@ spec :
               valueFrom :
                 configMapKeyRef :
                   name : importer
-                  key : datasource.url
+                  key : datasource-url
             - name : DATASOURCE_USERNAME
               valueFrom :
                 secretKeyRef :
                   name : importer
-                  key : datasource.username
+                  key : datasource-username
             - name : DATASOURCE_PASSWORD
               valueFrom :
                 secretKeyRef :
                   name : importer
-                  key : datasource.password
+                  key : datasource-password
             - name : RABBITMQ_HOST
               valueFrom :
                 configMapKeyRef :
                   name : importer
-                  key : rabbitmq.host
+                  key : rabbitmq-host
             - name : RABBITMQ_PORT
               valueFrom :
                 configMapKeyRef :
                   name : importer
-                  key : rabbitmq.port
+                  key : rabbitmq-port
             - name : RABBITMQ_USERNAME
               valueFrom :
                 secretKeyRef :
                   name : importer
-                  key : rabbitmq.username
+                  key : rabbitmq-username
             - name : RABBITMQ_PASSWORD
               valueFrom :
                 secretKeyRef :
                   name : importer
-                  key : rabbitmq.password
+                  key : rabbitmq-password
           resources :
             requests :
               cpu : "0.2"

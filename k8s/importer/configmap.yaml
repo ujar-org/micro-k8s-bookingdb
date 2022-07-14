@@ -3,6 +3,6 @@ kind : ConfigMap
 metadata :
   name : importer
 data :
-  datasource.url : jdbc:mysql://mysql:3306/sa_test_db
-  rabbitmq.host : rabbitmq
-  rabbitmq.port : 5672
+  datasource-url : jdbc:mysql://mysql:3306/sa_test_db
+  rabbitmq-host : rabbitmq
+  rabbitmq-port : 5672

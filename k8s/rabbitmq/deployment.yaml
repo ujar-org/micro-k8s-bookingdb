@@ -64,7 +64,9 @@ spec :
   ports :
     - port : 5672
       protocol : TCP
+      name: broker
     - port : 15672
       protocol : TCP
+      name: management
   selector :
     app : rabbitmq
