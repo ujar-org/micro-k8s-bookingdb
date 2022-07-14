@@ -8,7 +8,7 @@ set -x
 
 #minikube addons enable ingress
 
-cd ../k8s
+cd ../k8s || exit
 
 kubectl config use-context $CLUSTER_NAME
 kubectl apply -n $K8S_NAMESPACE -f init-container/configmap.yaml
@@ -29,4 +29,4 @@ echo $CLUSTER_IP
 sudo sed -i.bak 's/.*microservices-cluster.info/'"$CLUSTER_IP"' microservices-cluster.info/' /etc/hosts && sudo rm /etc/hosts.bak
 echo "$(minikube ip) microservices-cluster.info" | sudo tee -a /etc/hosts
 
-cd ../scripts
+cd ../scripts || exit
