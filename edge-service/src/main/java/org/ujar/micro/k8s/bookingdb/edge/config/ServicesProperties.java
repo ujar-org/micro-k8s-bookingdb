@@ -8,8 +8,4 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 @ConfigurationProperties(prefix = "ujar.services")
 public record ServicesProperties(String dashboardService) {
-
-  public String dashboardService(String uri) {
-    return dashboardService + uri;
-  }
 }

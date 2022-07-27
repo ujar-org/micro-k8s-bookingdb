@@ -1,5 +1,6 @@
 package org.ujar.micro.k8s.bookingdb.edge.service;
 
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -15,25 +16,54 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class DashboardService {
   private final ServicesProperties properties;
-  private final WebClient httpClient;
 
-  public Mono<CountryPage> countries() {
-    return httpClient.get()
-        .uri(properties.dashboardService("/api/v1/countries"))
+  public Mono<CountryPage> countries(Integer page, Integer size) {
+    if (size == null) {
+      size = 10;
+    }
+    var pageSize = size;
+    return WebClient.builder()
+        .baseUrl(properties.dashboardService()).build().get()
+        .uri(uriBuilder -> uriBuilder
+            .path("/api/v1/countries")
+            .queryParam("page", page)
+            .queryParam("size", pageSize)
+            .build()
+        )
         .retrieve()
         .bodyToMono(CountryPage.class);
   }
 
-  public Mono<CityPage> cities() {
-    return httpClient.get()
-        .uri(properties.dashboardService("/api/v1/cities"))
+  public Mono<CityPage> cities(Integer page, Integer size) {
+    if (size == null) {
+      size = 10;
+    }
+    var pageSize = size;
+    return WebClient.builder()
+        .baseUrl(properties.dashboardService()).build().get()
+        .uri(uriBuilder -> uriBuilder
+            .path("/api/v1/cities")
+            .queryParam("page", page)
+            .queryParam("size", pageSize)
+            .build()
+        )
         .retrieve()
         .bodyToMono(CityPage.class);
   }
 
-  public Mono<HotelPage> hotels() {
-    return httpClient.get()
-        .uri(properties.dashboardService("/api/v1/hotels"))
+  public Mono<HotelPage> hotels(Integer page, Integer size) {
+    if (size == null) {
+      size = 10;
+    }
+    var pageSize = size;
+    return WebClient.builder()
+        .baseUrl(properties.dashboardService()).build().get()
+        .uri(uriBuilder -> uriBuilder
+            .path("/api/v1/hotels")
+            .queryParam("page", page)
+            .queryParam("size", pageSize)
+            .build()
+        )
         .retrieve()
         .bodyToMono(HotelPage.class);
   }

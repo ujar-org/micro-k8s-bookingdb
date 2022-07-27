@@ -1,7 +1,7 @@
 type Query {
-    countries: CountryPageContent
-    cities: CityPageContent
-    hotels: CityPageContent
+    countries(page: Int, size: Int): CountryPageContent
+    cities(page: Int, size: Int): CityPageContent
+    hotels(page: Int, size: Int): CityPageContent
 }
 
 type Pageable {

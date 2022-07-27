@@ -1,6 +1,8 @@
 package org.ujar.micro.k8s.bookingdb.edge.web;
 
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 import org.ujar.micro.k8s.bookingdb.edge.model.CityPage;
@@ -16,17 +18,17 @@ public class DashboardController {
   private final DashboardService service;
 
   @QueryMapping
-  Mono<CountryPage> countries() {
-    return service.countries();
+  Mono<CountryPage> countries(@Argument @NonNull Integer page, @Argument Integer size) {
+    return service.countries(page, size);
   }
 
   @QueryMapping
-  Mono<CityPage> cities() {
-    return service.cities();
+  Mono<CityPage> cities(@Argument @NonNull Integer page, @Argument Integer size) {
+    return service.cities(page, size);
   }
 
   @QueryMapping
-  Mono<HotelPage> hotels() {
-    return service.hotels();
+  Mono<HotelPage> hotels(@Argument @NonNull Integer page, @Argument Integer size) {
+    return service.hotels(page, size);
   }
 }
